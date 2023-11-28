@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let br = "<br>";
+        //Задания, в которых необходимо использовать WHILE.
+
+        //1 задание
+        alert("Вывести # столько раз, сколько указал пользователь.");
+        let userNum = prompt("Введите число для вывода символа '#':")
+        let i = 0;
+        while(i < userNum)
+        {
+            document.write("#")
+            i++;
+        }
+    
+        // //2 задание
+        // alert("Пользователь ввел число, а на экран вывелись все числа от введенного до 0");
+        // let userNum = prompt("Введите число от которого начнется отсчет (больше 0):")
+        // let i = userNum;
+        // while (i >= 0) 
+        // {
+        //     document.write(i)
+        //     i--;
+        // }
+
+        // //3 задание
+        // alert("Запросить число и степень. Возвести число в указанную степень и вывести результат.");
+        // let userNum = prompt("Введите число:");
+        // let userPower = prompt("Введите степень:");
+        // while(userPower > 1)
+        // {
+        //     userNum *= userNum;
+        //     userPower--;
+        // }
+        // document.write("Число в степени равно = " + userNum)
+
+        // //4 задание
+        // alert("Запросить 2 числа и найти все общие делители.");
+        // let userNumFirst = prompt("Введите первое число:");
+        // let userNumSecond = prompt("Введите второе число:");
+        // let NumDivider = 1;
+
+        // document.write("Общие делители:")
+        // document.write(br);
+
+        // while(NumDivider <= userNumFirst || NumDivider <= userNumSecond)
+        // {
+        //     if(userNumFirst % NumDivider == 0 && userNumFirst % NumDivider == 0)
+        //     {
+        //         document.write(NumDivider + "; ")
+        //     }
+        //     NumDivider++;
+        // }
+
+        // //5 задание
+        // alert("Посчитать факториал введенного пользователем числа.");
+        // userNum = prompt("Введите число для факториала:");
+        // let sum = 1;
+        // while(userNum > 0)
+        // {
+        //     sum *= parseInt(userNum);
+        //     userNum--;
+        // }
+        // document.write("Факториал - " + sum)
+        
+        //----------------------------------------------------------------------------
+        //Задания, в которых необходимо использовать DO WHILE.
+
+        // //1 задание
+        // alert("Предлагать пользователю решить пример 2 + 2 * 2 до тех пор, пока он не решит его правильно.");
+        // let userAnswer;
+        // do {
+        //     userAnswer = prompt("2 + 2 * 2 = ");
+        // }
+        // while (userAnswer != 2 + 2 * 2);
+
+        // //2 задание
+        // alert("Делить число 1000 на 2 до тех пор, пока не получится число меньше 50. Вывести это число и сколько делений произвели.");
+        // let number = 1000;
+        // let numDivider = 0;
+        // do {
+        //     number /= 2;
+        //     numDivider++;
+        // }
+        // while (number > 50);
+        // document.write("Число: " + number + "; Кол-во делений: " + numDivider);
+
+        //----------------------------------------------------------------------------
+        //Задания, в которых необходимо использовать FOR.
+
+        // //1 задание
+        // alert("Вывести все числа от 1 до 100, которые кратные указанному пользователем числу.");
+        // let userNum = prompt("Введите число: ");
+        // document.write("Числа кратные " + userNum + " в диапазоне от 1 до 100: ");
+        // document.write(br);
+        // for (let i = 0; i < 100; i++) 
+        // {
+        //     if(userNum % i == 0)
+        //     {
+        //         document.write(i + "; ");
+        //     }
+        // }
+
+        // //2 задание
+        // alert("Вывести каждый 4-й элемент из указанного пользователем диапазона. Пользователь указывает минимальное и максимальное значения диапазона.");
+        // let userMin = prompt("Введите начало диапазона: ");
+        // let userMax = prompt("Введите конец диапазона: ");
+        // let counter = 1;
+        // document.write("Каждый 4-й элемент в диапазоне от " + userMin + " до " + userMax +" : ");
+        // document.write(br);
+
+        // for (let i = parseInt(userMin); i < userMax; i++)
+        // {
+        //     if(counter == 4)
+        //     {
+        //         document.write(i + "; ");
+        //         counter = 0;
+        //     }
+        //     counter++;
+        // }
+
+        // //3 задание
+        // alert("Запросить число и проверить, простое ли оно. Простое число делится без остатка только на себя и на единицу.");
+        // let userNum = prompt("Введите число: ");
+        // let bool;
+        // for (let i = 2; i < userNum; i++)
+        // {
+        //     if(userNum % i == 0)
+        //     {
+        //         bool = false;
+        //         break;
+        //     }
+        // }
+        // if(bool == false)
+        // {
+        //     document.write("Число не простое");
+        // }
+        // else
+        // {
+        //     document.write("Число простое");
+        // }
+    </script>
+</body>
+</html>
