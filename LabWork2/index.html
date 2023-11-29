@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const br = "<br>";
+        const br2 = "<br><br>";
+
+        let audiences = [
+            ["Аудитория #1", 15 ,"Психология"], 
+            ["Аудитория #2", 12 ,"Искусство"], 
+            ["Аудитория #3", 18 ,"Экономический"], 
+            ["Аудитория #4", 10 ,"Психология"],
+            ["Аудитория #5", 17 ,"Психология"],
+            ["Аудитория #6", 11 ,"Экономический"], 
+        ];
+        
+        //1 задание
+        function PrintAudiences(array) 
+        {
+            for (let i in array)
+            {
+                for (let j in array[i])
+                {
+                    document.write(array[i][j]);
+                    document.write(j == array.length-1 ? ";" : ", ");
+                }
+                document.write("</br>");
+            }
+        }
+        document.write("Список аудиторий: " + br);
+        PrintAudiences(audiences);
+        document.write(br2);
+
+        // //2 задание
+        function PrintSelectedAudience(array) 
+        {
+            let userAudience = prompt("Введите название факультета:", "Психология")
+            let isFind = false;
+            for (let i in array)
+            {
+                for (let j in array[i])
+                {
+                    if(userAudience == array[i][j])
+                    {
+                        let buf = array[i].join(", ");
+                        document.write(`${buf};${br}`);
+                        isFind = true;
+                    }
+                }
+            }
+            if(!isFind)
+            {
+                document.write(`Информация о факультете - ${userAudience} - не найдена`);
+            }
+        }
+        document.write("Указанный факультет: " + br);
+        PrintSelectedAudience(audiences);
+        document.write(br2);
+
+        //3 задание
+        let group1 = ["КП-001", 13, "Психология"];
+        document.write(`Инфо о группе - ${group1.join(", ")}${br}`);
+        function PrintAudiencesForGroup(group, array)
+        {
+            let isFind = false;
+            for (let i in array)
+            {
+                if(group[2] == array[i][2] && group[1] <= array[i][1])
+                {
+                    let buf = array[i].join(", ");
+                    document.write(`${buf};${br}`);
+                    isFind = true;
+                }
+            }
+            if(!isFind)
+            {
+                document.write(`Подходящих аудиторий не найдено${br}`);
+            }
+        }
+        document.write("Аудитории для группы: " + br);
+        PrintAudiencesForGroup(group1, audiences);
+        document.write(br2);
+
+        // //4 задание
+        function numUp(a1, a2)
+        {
+            return a1[1] - a2[1];
+        }
+        function SortAudiencesByNumber(array)
+        {
+            array.sort(numUp);
+            return array;
+        }
+        document.write(`Отсортированный массив аудиторий по кол-во мест:${br}`);
+        PrintAudiences(SortAudiencesByNumber(audiences));
+        document.write(br2);
+
+        //5 задание
+        function alphabetDown (a, b) 
+        {
+            if (a[0] < b[0]) {
+                return 1;
+            }
+            if (a[0] > b[0]) {
+                return -1;
+            }
+            return 0;
+        };
+        function SortAudiencesByAlphabet(array)
+        {
+            array.sort(alphabetDown);
+            return array;
+        }
+        document.write(`Отсортированный массив аудиторий по названию (по убыванию):${br}`);
+        PrintAudiences(SortAudiencesByAlphabet(audiences));
+    </script>
+</body>
+</html>
