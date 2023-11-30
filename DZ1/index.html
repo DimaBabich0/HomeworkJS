@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let br = "<br>";
+
+        //1 задание
+        function Task1()
+        {
+            alert("Подсчитать сумму всех чисел в заданном пользователем диапазоне. ");
+            let userMin = prompt("Введите начало диапазона: ");
+            let userMax = prompt("Введите конец диапазона: ");
+            let sum = 0;
+            for (let i = parseInt(userMin); i <= userMax; i++)
+            {
+                sum += i;
+            }
+            alert(`Сумма чисел с ${userMin} по ${userMax} равна - ${sum}`)
+        }
+
+        //3 задание
+        function Task3()
+        {
+            alert("Запросить у пользователя число и вывести все делители этого числа.");
+            let userNum = prompt("Введите число: ");
+            document.write(`Все делители числа ${userNum}: `);
+            document.write(br);
+            for (let i = 0; i < userNum; i++) 
+            {
+                if(userNum % i == 0)
+                {
+                    document.write(i + "; ");
+                }
+            }
+        }
+
+        //4 задание
+        function Task4()
+        {
+            alert("Определить количество цифр в введенном числе.");
+            let userNum = prompt("Введите число: ");
+            document.write(`В числе ${userNum.length} цифр`);
+            document.write(br);
+        }
+
+        //5 задание
+        function Task5()
+        {
+            alert("Запросить у пользователя 10 чисел и подсчитать, сколько он ввел положительных, отрицательных и нулей. При этом также посчитать, сколько четных и нечетных.");
+            let userNum;
+            let positive = 0, negatives = 0, zeros = 0;
+            let odd = 0, even = 0;
+            for (let i = 0; i < 10; i++) 
+            {
+                userNum = prompt("Введите число: ");
+                if (userNum > 0)
+                    positive++;
+                else if (userNum < 0)
+                    negatives++;
+                else if (userNum == 0)
+                    zeros++;
+
+                if (userNum % 2 == 0)
+                    even++;
+                else
+                    odd++;
+            }
+            document.write(`Количество положительных чисел: ${positive}${br}`);
+            document.write(`Количество отрицательных чисел: ${negatives}${br}`);
+            document.write(`Количество нулей: ${zeros}${br}`);
+            document.write(`Количество четных чисел: ${even}${br}`);
+            document.write(`Количество нечетных чисел: ${odd}${br}`);
+            document.write(br);
+        }
+        
+        //6 задание
+        function Task6()
+        {
+            alert("Зациклить калькулятор.");
+            let isExit = false;
+            while(!isExit)
+            {
+                let userNum1 = prompt("Введите первое число: ");
+                let userNum2 = prompt("Введите второе число: ");
+                let userSymbol = prompt("Введите математический знак: ");
+                let answer;
+                if(userSymbol == '+')
+                    answer = parseInt(userNum1) + parseInt(userNum2);
+                else if (userSymbol == '-')
+                    answer = parseInt(userNum1) - parseInt(userNum2);
+                else if (userSymbol == '*')
+                    answer = parseInt(userNum1) * parseInt(userNum2);
+                else if (userSymbol == '/')
+                    answer = parseInt(userNum1) / parseInt(userNum2);
+                else
+                {
+                    alert("Вы ввели неправильный знак. Попробуйте снова.")
+                    continue;
+                }
+                alert(`${userNum1} ${userSymbol} ${userNum2} = ${answer}`)
+                isExit = confirm("Закончить программу калькулятор?")
+            }
+        }
+
+        //7 задание
+        function Task7()
+        {
+            alert("Запросить у пользователя число и на сколько цифр его сдвинуть.");
+            let userNum = prompt("Введите число: ");
+            let digitsNum = prompt("Введите на сколько сдвинуть:");
+            let str = userNum.toString();
+            let buf;
+            for(let i = 1; i <= digitsNum; i++)
+            {
+                buf = str[0];
+                str = str.slice(1);
+                str = str + buf;
+            }
+            alert(`Число ${userNum} при сдвижении на ${digitsNum} получается ${str}`);
+        }
+
+        //8 задание
+        function Task8()
+        {
+            alert("Зациклить вывод дней недели.");
+            let days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+            let isNotExit = true;
+            while(isNotExit)
+            {
+                for (let i = 0; i < days.length; i++) 
+                {
+                    isNotExit = confirm(`День недели - ${days[i]}. Хотите увидеть следующий день?`)
+                    if(!isNotExit)
+                        break;
+                }
+            }
+        }
+
+        //9 задание
+        function Task9()
+        {
+            alert("Вывести таблицу умножения для всех чисел от 2 до 9.");
+            for (let i = 2; i <= 9; i++) 
+            {
+                for (let j = 1; j <= 10; j++)
+                {
+                    document.write(`${i} * ${j} = ${i*j}${br}`);
+                }
+                document.write(`${br}${br}`);
+            }
+        }
+
+        // Task1();
+        // Task3();
+        // Task4();
+        // Task5();
+        // Task6();
+        // Task7();
+        // Task8();
+        // Task9();
+
+    </script>
+</body>
+</html>
