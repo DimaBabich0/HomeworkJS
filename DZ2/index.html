@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Task1()
+        {
+            let questions = [
+                ["This is a test?", "yes", 1],
+                ["This is a test?", "yes", 1],
+                ["This isn't a test?", "no", 2],
+            ];
+            let userAnswers = [];
+            let userPoints = 0;
+
+            for (let i = 0; i < questions.length; i++) 
+            {
+                let userAnswer = prompt(questions[i][0]);
+                if(userAnswer.toLowerCase() == questions[i][1])
+                {
+                    userPoints += questions[i][2];
+                }
+                userAnswers.push([userAnswer, userPoints]);
+            }
+            for (let i = 0; i < userAnswers.length; i++) 
+            {
+                document.write(`You're answer: ${userAnswers[i][0]}; The right answer is: ${questions[i][1]}<br>`);
+            }
+            document.write(`Final number of points: ${userPoints}<br>`);
+        }
+
+        function Task2()
+        {
+            let userName = prompt("Enter your name: ");
+            const rangeLetter = [
+                ['A', 'Z'], 
+                ['a', 'z']
+            ];
+            const Space = " ";
+            let chSpace = Space.charCodeAt(0);
+            let isNotLetter = false;
+
+            for (let i = 0; i < userName.length; i++) 
+            {
+                let userCh = userName.charCodeAt(i);
+                let isNotForbidden = false;
+
+                for (let j = 0; j < rangeLetter.length; j++) 
+                {
+                    rangeChBegin = rangeLetter[j][0].charCodeAt(0);
+                    rangeChEnd = rangeLetter[j][1].charCodeAt(0);
+                    if (userCh >= rangeChBegin && userCh <= rangeChEnd) 
+                    {
+                        isNotForbidden = true;
+                        break;
+                    }
+                    else if(userCh == chSpace)
+                    {
+                        isNotForbidden = true;
+                        break;
+                    }
+                }
+                if (!isNotForbidden)
+                {
+                    isNotLetter = true;
+                    break;
+                }
+            }
+            if (isNotLetter)
+            {
+                alert("Name contains forbidden characters.");
+            }
+            else
+            {
+                alert("Name entered correctly");
+            }
+        }
+        
+        function Task4()
+        {
+            const arrSize = 5;
+            const maxRand = 10;
+            let arr1 = [];
+            let arr2 = [];
+
+            function RandArr(arr, arrSize, maxRand)
+            {
+                for (let i = 0; i < arrSize; i++) 
+                {
+                    arr[i] = Math.floor(Math.random() * maxRand);
+                }
+            }
+            function PrintArr(arr)
+            {     
+                for (let i = 0; i < arr.length; i++) 
+                {
+                    document.write(`[${arr[i]}]; `);
+                }
+                document.write("<br>");
+            }
+
+            function ArrAll(arr1, arr2)
+            {
+                let newArr = [];
+
+                for (let i = 0; i < arr1.length; i++) 
+                {
+                    if (!newArr.includes(arr1[i])) 
+                    {
+                        newArr.push(arr1[i]);
+                    }
+                }
+
+                for (let j = 0; j < arr2.length; j++) 
+                {
+                    if (!newArr.includes(arr2[j])) 
+                    {
+                        newArr.push(arr2[j]);
+                    }
+                }
+
+                return newArr;
+            }
+            function ArrCommon(arr1, arr2)
+            {
+                let newArr = [];
+                for (let i = 0; i < arr1.length; i++) 
+                {
+                    for (let j = 0; j < arr2.length; j++) 
+                    {
+                        if (arr1[i] == arr2[j]) 
+                        {
+                            if (!newArr.includes(arr1[i]))
+                            {
+                                newArr.push(arr1[i]);
+                            }
+                            break;
+                        }
+                    }
+                }
+                return newArr;
+            }
+            function ArrInFirst(arr1, arr2) 
+            {
+                let newArr = [];
+
+                for (let i = 0; i < arr1.length; i++) 
+                {
+                    let isFind = false;
+
+                    for (let j = 0; j < arr2.length; j++) 
+                    {
+                        if (arr1[i] == arr2[j]) 
+                        {
+                            isFind = true;
+                            break;
+                        }
+                    }
+
+                    if (!isFind) 
+                    {
+                        if(!newArr.includes(arr1[i]))
+                        {
+                            newArr.push(arr1[i]);
+                        }
+                    }
+                }
+
+                return newArr;
+            }
+
+            RandArr(arr1, arrSize, maxRand);
+            PrintArr(arr1);
+
+            RandArr(arr2, arrSize, maxRand);
+            PrintArr(arr2);
+
+            document.write("Все элементы без повторений:<br>")
+            let result = ArrAll(arr1, arr2);
+            PrintArr(result);
+
+            document.write("Общие элементы:<br>")
+            result = ArrCommon(arr1, arr2);
+            PrintArr(result);
+
+            document.write("Элементы из первого массива которых нет во втором массиве:<br>")
+            result = ArrInFirst(arr1, arr2);
+            PrintArr(result);
+        }
+
+        function Task5()
+        {
+            let fruits = ["Клубника", "Арбуз", "Апельсин", "Ананас", "Банан", "Яблоко", "Манго"];
+            
+            function PrintArr(arr)
+            {    
+                document.write('<ul>');
+                for (let i = 0; i < arr.length; i++) 
+                {
+                    document.write(`<li>${arr[i]}</li>`);
+                }
+                document.write('</ul>');
+            }
+            function GetElement(arr)
+            {
+                let userInput = prompt("Введите фрукт для поиска:", );
+                for(let i = 0; i < arr.length; i++)
+                {
+                    if(arr[i].toLowerCase() == userInput.toLowerCase())
+                    {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+            
+            document.write("Список фруктов:<br>");
+            PrintArr(fruits);
+
+            document.write("Список фрукто (отсортированный):<br>");
+            fruits.sort();
+            PrintArr(fruits);
+            document.write(`Ваш фрукт находится на ${GetElement(fruits) + 1} месте в списке`);
+        }
+        
+        Task1();
+        Task2();
+        Task4();
+        Task5();
+    </script>
+</body>
+</html>
