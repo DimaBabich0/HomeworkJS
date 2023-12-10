@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        function Task1()
+        {
+            class ExtendedDate extends Date
+            {
+                #day;
+                #month;
+                #year;
+
+                constructor()
+                {
+                    super();
+                    this.#day = super.getDate();
+                    this.#month = super.getMonth() + 1;
+                    this.#year = super.getFullYear();
+                }
+
+                showDate()
+                {
+                    if (this.#day < 10)
+                    {
+                        this.#day = "0" + this.#day;
+                    }
+                    if (this.#month < 10)
+                    {
+                        this.#month = "0" + this.#month;
+                    }
+                    console.log(`Дата: ${this.#day}.${this.#month}.${this.#year}`);
+                }
+
+                checkDate()
+                {
+                    let day = super.getDay();
+                    let month = super.getMonth();
+                    let year = super.getFullYear();
+                    
+                    if(year < this.#year)
+                        return true;
+                    else if (year > this.#year)
+                        return false;
+                    else if (year == this.#year)
+                    {
+                        if(month < this.#month)
+                            return true;
+                        else if(month > this.#month)
+                            return false;
+                        else if(month == this.#month)
+                        {
+                            if(day < this.#day)
+                                return true;
+                            else if(day > this.#day)
+                                return false;
+                            return true;
+                        }
+                    }
+                }
+
+                isLeapYear()
+                {
+                    if ((0 == this.#year % 4) && (0 != this.#year % 100) || (0 == this.#year % 400)) 
+                        return true;
+                    return false;
+                }
+
+                nextDate() 
+                {
+                    const nextDate = new Date(this.#year, this.#month - 1, this.#day + 1);
+                    console.log(`${nextDate.getDate()}.${nextDate.getMonth() + 1}.${nextDate.getFullYear()}`);
+                }
+            }
+            let Extended_Date = new ExtendedDate();
+            Extended_Date.showDate();
+            console.log(`Проверка на высокосный год: ${Extended_Date.isLeapYear()}`);
+            console.log(`Проверка на прошедшую или будущую дату: ${Extended_Date.isLeapYear()}`);
+            console.log(`Выводит следующего дня:`);
+            Extended_Date.nextDate();
+        }
+
+        function Task2()
+        {
+            class Marker
+            {
+                #color;
+                #percent;
+                #usingPercent = 0.5;
+
+                constructor(color, percent)
+                {
+                    this.#color = color;
+                    this.#percent = percent;
+                }
+
+                get percent()
+                {
+                    return this.#percent;
+                }
+
+                get color()
+                {
+                    return this.#color;
+                }
+
+                set percent(num)
+                {
+                    if(num > 0)
+                    {
+                        this.#percent = num;
+                    }
+                }
+
+                write(text)
+                {
+                    if(text.length * this.#usingPercent <= this.#percent)
+                    {
+                        let length = 0;
+                        for(const i in text)
+                        {
+                            if (text[i] != " ")
+                                length++;
+                        }
+                        this.#percent -= length * this.#usingPercent;
+
+                        let output = document.querySelector("div");
+                        output.innerHTML += `<p style="color: ${this.#color}">${text}</p>`;
+                        console.log(`Цвет: ${this.#color}; Осталось: ${this.#percent}%`);
+                    }
+                    else
+                    {
+                        console.log(`Чернил недостаточно в маркере ${this.#color};\nОсталось: ${this.#percent}%`);
+                    }
+                }
+            }
+
+            let redMarker = new Marker("red", 10);
+            redMarker.write("Hello world");
+            redMarker.write("Hello world");
+
+            class ExtendedMarker extends Marker 
+            {
+                addInk(inkPercent)
+                {
+                    super.percent += inkPercent;
+                    console.log(`После заправки ${super.color} маркера осталось: ${super.percent}%`);
+                }
+            }
+
+            let redMarkerNew = new ExtendedMarker("red", 10);
+            redMarkerNew.addInk(20);
+            redMarkerNew.write("Hello world");
+
+            let blueMarkerNew = new ExtendedMarker("blue", 20);
+            blueMarkerNew.write("Blue marker")
+
+            let greenMarkerNew = new ExtendedMarker("green", 20);
+            greenMarkerNew.write("Green marker")
+        }
+
+        // Task1();
+        // Task2();
+    </script>
+</body>
+</html>
