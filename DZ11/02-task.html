@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 02</title>
+</head>
+
+<body>
+    <p>
+        Радиус <input id="inputRadius" type="text">
+    </p>
+    <p>
+        Высота <input id="inputHeight" type="text">
+    </p>
+    <button id="button">Посчитать</button>
+
+    <p>Результат: <span id="output"></span> </p>
+    <script>
+        /*
+        Задание:
+        Напишите сценарий, который вычисляет объем цилиндра по параметрам, которые вводит пользователь.
+        Для расчета используйте формулу - V = Math.PI * radius ^ 2 * height;
+        Разместите на странице два поля ввода - первое для радиуса цилиндра, второе для высоты цилиндра.
+        Объем цилиндра выведите в тело страницы.
+        */
+
+        let inputRadius = document.querySelector("#inputRadius");
+        let inputHeight = document.querySelector("#inputHeight");
+        let button = document.querySelector("#button");
+        let output = document.querySelector("#output");
+
+        button.addEventListener("click", CylinderCapacity);
+
+        function CylinderCapacity()
+        {
+            if(inputRadius.value || inputHeight.value)
+            {
+                let result = Math.PI * Math.pow(inputRadius.value, 2) * inputHeight.value;
+                output.textContent = result;
+
+                inputRadius.value = "";
+                inputHeight.value = "";
+            }
+            else alert("В поля не введены числа.")
+        }
+    </script>
+</body>
+
+</html>
