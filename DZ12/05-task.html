@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Пользователи системы:</p>
+    <ul id="usersList">
+    </ul>
+    
+    <template id="template">
+        <li>{{name.first}} {{name.last}} ({{email}})</li>
+    </template>
+
+    <script src="mustache.min.js"></script>
+    <script>
+        /*
+        Задание:
+        Перепишите код таким образом, чтобы в нем использовались шаблоны.
+        Результат работы данного кода не должен измениться.
+        */
+        let users = [
+            {
+                name: {
+                    first: 'Golden',
+                    last: 'Clements'
+                },
+                email: 'golden.clements@ewaves.io',
+            },
+            {
+                name: {
+                    first: 'Francis',
+                    last: 'Hebert'
+                },
+                email: 'francis.hebert@xplor.biz',
+            },
+            {
+                name: {
+                    first: 'Hale',
+                    last: 'Cross'
+                },
+                email: 'hale.cross@earthpure.us',
+            },
+            {
+                name: {
+                    first: 'Delores',
+                    last: 'Sykes'
+                },
+                email: 'delores.sykes@assitia.com',
+            },
+            {
+                name: {
+                    first: 'Ryan',
+                    last: 'Bolton'
+                },
+                email: 'ryan.bolton@moltonic.biz',
+            },
+            {
+                name: {
+                    first: 'Carey',
+                    last: 'Schwartz'
+                },
+                email: 'carey.schwartz@uxmox.info',
+            },
+            {
+                name: {
+                    first: 'Trevino',
+                    last: 'Mullins'
+                },
+                email: 'trevino.mullins@terrasys.org',
+            },
+            {
+                name: {
+                    first: 'Gilliam',
+                    last: 'Mendez'
+                },
+                email: 'gilliam.mendez@zenthall.tv',
+            },
+            {
+                name: {
+                    first: 'Brewer',
+                    last: 'Vargas'
+                },
+                email: 'brewer.vargas@qimonk.co.uk',
+            },
+            {
+                name: {
+                    first: 'Newman',
+                    last: 'Wynn'
+                },
+                email: 'newman.wynn@visalia.name',
+            }
+        ];
+
+        let template = document.querySelector("template").innerHTML;
+        let output = document.querySelector("#usersList");
+        users.forEach(element => {
+            let html = Mustache.render(template, element);
+            output.insertAdjacentHTML("beforeend", html);
+        });
+    </script>
+</body>
+
+</html>
