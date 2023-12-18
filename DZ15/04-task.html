@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 04</title>
+    <style>
+        .completed {
+            color: green;
+            border: 1px solid green;
+        }
+
+        .incomplete {
+            color: red;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="output"></table>
+    <script>
+        /*
+        Задание:
+        Напишите сценарий, который выполняет GET запрос по адресу https://jsonplaceholder.typicode.com/todos
+        И выводит содержимое ответа в виде таблицы.
+        */
+        let url = "https://jsonplaceholder.typicode.com/todos";
+        let output = document.querySelector("#output");
+
+        document.addEventListener("DOMContentLoaded", function()
+        {
+            fetch(url)
+                .then(response => response.json())
+                .then(json => render(json))
+        });
+
+        function render(list) {
+            list.forEach(element => {
+                let tr = document.createElement("tr");
+                let tdId = document.createElement("td");
+                let tdStatus = document.createElement("td");
+                let tdTitle = document.createElement("td");
+
+                tdId.innerText = element.id;
+                tdStatus.innerText = element.completed;
+                tdTitle.innerText = element.title;
+
+                if (element.completed) {
+                    tdId.classList.add("completed");
+                    tdStatus.classList.add("completed");
+                    tdTitle.classList.add("completed");
+                }
+                else {
+                    tdId.classList.add("incomplete");
+                    tdStatus.classList.add("incomplete");
+                    tdTitle.classList.add("incomplete");
+                }
+
+                tr.append(tdId);
+                tr.append(tdStatus);
+                tr.append(tdTitle);
+
+                output.append(tr);
+            });
+        }
+    </script>
+</body>
+
+</html>
