@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: gainsboro;
+        }
+        img
+        {
+            width: 64px;
+            height: 64px;
+        }
+        span
+        {
+            color: red;
+        }
+        #blocks
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .menu
+        {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        .weather
+        {
+            width: 100%;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0px;
+        }
+        .weather p
+        {
+            margin: 0%;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="userCity" id="userCity" value="Одесса">
+    <h1>Прогноз погоды - <span id=city></span></h1>
+    <div class="menu">
+        <div id="block"></div>
+        <div id="blocks"></div>
+        <input id="btn2" type="button" value="↑">
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
